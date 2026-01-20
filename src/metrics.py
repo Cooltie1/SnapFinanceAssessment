@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 def app_trends_by_period(apps: pd.DataFrame, freq: str = "W") -> pd.DataFrame:
 
@@ -13,7 +14,9 @@ def app_trends_by_period(apps: pd.DataFrame, freq: str = "W") -> pd.DataFrame:
             .agg(
                 applications=("submitted","sum"),
                 approved=("approved", "sum"),
-                used=("used", "sum")
+                used=("used", "sum"),
+                avg_approved_amount = ("approved_amount", "mean"),
+                avg_used_amount = ("dollars_used", "mean")
             )
             .reset_index()
     )
