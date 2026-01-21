@@ -45,3 +45,19 @@ def app_metrics_by_store(apps: pd.DataFrame) -> pd.DataFrame:
     )
 
     return summaryTable
+
+
+def app_metrics_by_Mktg(apps: pd.DataFrame) -> pd.DataFrame:
+
+    df= apps.copy()
+
+    summaryTable = (
+        df.groupby("name", dropna=False)
+            .agg(
+                used_amount = ("dollars_used", "sum"),
+                marketing_spend=("spend", "max")
+            )
+            .reset_index()
+    )
+
+    return summaryTable
