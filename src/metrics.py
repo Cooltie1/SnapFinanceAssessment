@@ -61,3 +61,4 @@ def app_metrics_by_Mktg(apps: pd.DataFrame) -> pd.DataFrame:
     )
 
     return summaryTable
+
